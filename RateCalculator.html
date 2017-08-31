@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <title>Mortgage Calculator</title>
 <style>
+    input[type=number], select {
+		width: 20%;
+		padding: 5px 5px 5px 5px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-sizing: border-box;
+		padding-right: 40px;
+	}
     #container{
         width: 940px;
         height: 800px;
@@ -57,9 +67,9 @@
     <h2 id="newPayment"></h2>
 
     <p>
-        <button class="btn" onclick="RequestData(document.getElementById('amount').value)">Calculate</button>
+        <button class="btn btn-primary" onclick="RequestData(document.getElementById('amount').value)">Calculate</button>
     </p>
-    <ol>
+    <ol style="list-style: none;">
         <li id="monthly"></li>
         <li id="total"></li>
         <li id="interest"></li>
