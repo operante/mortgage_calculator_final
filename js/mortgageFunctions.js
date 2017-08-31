@@ -5,7 +5,7 @@
  *
  */
 function computeLoan() {
-    while (true) {
+    // while (true) {
         if (document.getElementById("purchasePrice").value === "") {
             document.getElementById("validateAmountMsg").innerHTML = "Purchase price is required.";
         } else {
@@ -27,8 +27,8 @@ function computeLoan() {
 
             requestData(document.getElementById('purchasePrice').value);
         }
-        break;
-    }
+   //     break;
+   // }
 }
 
 /* MonthlyPayment(loanPrincipal, numberOfMonths, rate)
