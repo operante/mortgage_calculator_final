@@ -1,4 +1,3 @@
-
 function computeLoan() {
     let purchasePrice = document.getElementById("amount").value;
     let interestRate = document.getElementById("rate").value * 0.01;
@@ -7,14 +6,14 @@ function computeLoan() {
     let downPayment = purchasePrice * downPercent;
     let loanPrincipal = purchasePrice - downPayment;
     let monthlyPayment = new MonthlyPayment(loanPrincipal, numbersMonths, interestRate); //monthly total payment
-    let totalInterest = loanPrincipal * interestRate;
-    let totalEverything = loanPrincipal + totalInterest;
+    let totalEverything = monthlyPayment.payment * numbersMonths;
+    let totalInterest = totalEverything - loanPrincipal;
 
     document.getElementById("downpayment").innerHTML = "$" + downPayment;
     document.getElementById('newPayment').innerHTML = "Monthly Payment = $" + monthlyPayment.payment;
-    document.getElementById('monthly').innerHTML = "Your monthly total payment is: " + monthlyPayment.payment;
-    document.getElementById('total').innerHTML = "Your total amount of loan is: " + totalEverything;
-    document.getElementById('interest').innerHTML = "Your interest amount is: " + totalInterest;
+    document.getElementById('monthly').innerHTML = "Your monthly total payment is: " + "$" + monthlyPayment.payment;
+    document.getElementById('total').innerHTML = "Your total payment: " + "$" + totalEverything.toFixed(2);
+    document.getElementById('interest').innerHTML = "Your interest amount is: " + "$" + totalInterest.toFixed(2);
 }
 
 /* Calculate Monthly Payment, used in both User the specified rate as well as lender-term specific rates
@@ -25,8 +24,9 @@ function computeLoan() {
  * r: monthly interest rate, calculated by dividing your annual interest rate by 12.
  * n: number of payments (the number of months you will be paying the loan)[6]
  */
+
 function MonthlyPayment (loanPrincipal, numberOfMonths, rate) {
-    let monthlyRate = (rate/12)* 0.01;                                                     // This is r.
+    let monthlyRate = (rate/12);         // This is r.
     let payment = loanPrincipal *
         ((monthlyRate*(1 + monthlyRate)**numberOfMonths)/((1 + monthlyRate)**numberOfMonths - 1)); // monthly payment
     this.payment = payment.toFixed(2).toString();
