@@ -39,7 +39,7 @@
 </head>
 <body background="img/bgk.jpeg">
 <div id="container">
-    <h1 id="mortgage-title"> <span class="glyphicon glyphicon-tree-deciduous"></span>  Mortage Calculator AJAX Final <i class="fa fa-plus" aria-hidden="true"></i></h1>
+    <h1 id="mortgage-title"> <span class="glyphicon glyphicon-tree-deciduous"></span>Mortage Calculator AJAX Final<i class="fa fa-plus" aria-hidden="true"></i></h1>
     <p>
         <label style="font-family:'Noto Sans',sans-serif" for="purchase-price">Amount of the Loan:</label>
         <input id="amount" type="number" min="1" max="1000000" onchange="computeLoan()" placeholder=10000.00 required />
@@ -50,8 +50,8 @@
     </p>
 
     <p>
-        <label style="font-family:'Noto Sans',sans-serif" for="months">Repayment Period:</label>
-        <input id="months" type="number" min="1" max="360" value=360 onchange="computeLoan()" required />
+        <label style="font-family:'Noto Sans',sans-serif" for="months">Repayment Period (years):</label>
+        <input id="months" type="number" min=5 max=30 value=30 step=5 onchange="computeLoan()" required />
     </p>
     <p>
         <label style="font-family:'Noto Sans',sans-serif" for="months">ZipCode: </label>
