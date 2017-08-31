@@ -49,15 +49,13 @@ function generateInnerHTML(f, html, loanPrincipal) {
     for(let i = 0; i < dataArray.length; i++){
         let lender = dataArray[i].lenderName;
         let rate = dataArray[i].mortgageRate;
-        console.log(rate);
-        let payment = MonthlyPayment(loanPrincipal, loanTerm, rate);
-        console.log(payment)
+        let monthlyPayment = new MonthlyPayment(loanPrincipal, loanTerm, rate);
         let phone = dataArray[i].phoneNumber;
         let webUrl = dataArray[i].website;
         html +=
             'Lender: ' + lender + '&nbsp' +
             '<a class="glyphicon glyphicon-link" aria-hidden="true" href=' + webUrl + '></a>' + '<br>' +
-            'Monthly Payment: ' + payment + '<br>' +
+            'Monthly Payment: ' + monthlyPayment.payment + '<br>' +
             'Lender Phone No.: ' + phone + '<br>' +
             'Lender Website: ' + webUrl + '<br><br>';
         document.getElementById('lender-list').innerHTML = html;
