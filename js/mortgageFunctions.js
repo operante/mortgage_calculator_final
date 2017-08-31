@@ -1,14 +1,20 @@
 
 function computeLoan() {
     let purchasePrice = document.getElementById("amount").value;
-    let interestRate = document.getElementById("rate").value;
+    let interestRate = document.getElementById("rate").value * 0.01;
     let numbersMonths = document.getElementById("months").value * 12;
-    let downPercent = document.getElementById("downPercent").value;
-    let downPayment = purchasePrice * downPercent * 0.01;
+    let downPercent = document.getElementById("downPercent").value * 0.01;
+    let downPayment = purchasePrice * downPercent;
     let loanPrincipal = purchasePrice - downPayment;
     let monthlyPayment = new MonthlyPayment(loanPrincipal, numbersMonths, interestRate); //monthly total payment
+    let totalInterest = loanPrincipal * interestRate;
+    let totalEverything = loanPrincipal + totalInterest;
+
     document.getElementById("downpayment").innerHTML = "$" + downPayment;
     document.getElementById('newPayment').innerHTML = "Monthly Payment = $" + monthlyPayment.payment;
+    document.getElementById('monthly').innerHTML = "Your monthly total payment is: " + monthlyPayment.payment;
+    document.getElementById('total').innerHTML = "Your total amount of loan is: " + totalEverything;
+    document.getElementById('interest').innerHTML = "Your interest amount is: " + totalInterest;
 }
 
 /* Calculate Monthly Payment, used in both User the specified rate as well as lender-term specific rates
